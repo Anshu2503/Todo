@@ -1,22 +1,22 @@
-let btn = document.querySelector("button");
+let addBtn = document.querySelector(".add");
 let ul = document.querySelector("ul");
 let input = document.querySelector("input");
 
-
-btn.addEventListener("click",function(){
-    let item = document.createElement("li");
-    item.innerText = input.value;
-    
-
-    let delBtn = document.createElement("button");
-    delBtn.innerText = "Delete";
-    delBtn.classList.add("delete");
-
-    item.appendChild(delBtn);
-    ul.appendChild(item);
-    input.value ="";
+addBtn.addEventListener("click",function(){
+    if(input.value!=""){
+        let item = document.createElement("li");
+        item.innerText = input.value;
+        ul.appendChild(item);
+        input.value ="";
+        let delBtn = document.createElement("button");
+        delBtn.innerText = "Delete";
+        delBtn.classList.add("delete");
+        item.appendChild(delBtn);
+    }
+    else{
+        alert("Please Enter A Task.");
+    }
 });
-
 ul.addEventListener("click",function(event){
     if (event.target.nodeName == "BUTTON"){
         let listItem = event.target.parentElement;
